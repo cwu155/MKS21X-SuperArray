@@ -100,5 +100,12 @@ public class Driver{
     System.out.println(a.size());
     System.out.println(a.add("blue"));
     System.out.println(a.toStringDebug());
+
+    // testing contains()
+
+    System.out.println(a.contains("blue"));
+    System.out.println(a.contains("green"));
 	}
+
+
 }

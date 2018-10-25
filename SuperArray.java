@@ -44,7 +44,7 @@ public class SuperArray{
   public String toString(){
     String result = "";
     for (int i = 0; i < data.length; i++){
-      if (i == this.size()-1){
+      if (i == size()-1){
       result += data[i];
     } else if (data[i] != null){
       result += data[i];
@@ -93,6 +93,15 @@ public String toStringDebug(){
         data[i] = copy[i];
       }
     data = copy;
+  }
+
+// Phase 3
+
+  public boolean contains(String element){
+    for (int i = 0; i < size(); i++){
+      if ((data[i]).equals(element))
+      return true;
+    } return false;
   }
 
 }
