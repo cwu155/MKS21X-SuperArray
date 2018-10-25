@@ -2,13 +2,19 @@ public class SuperArray{
   private String[] data;
   private int size;
 
+  // Phase 1
+
   public SuperArray(){
     data = new String[10];
   }
 
+  public SuperArray(int size){
+    data = new String[size];
+  }
+
   public void clear(){
     for (int i = 0; i < data.length; i++){
-      data[i] = null;
+    data[i] = null;
     }
   }
 
@@ -27,11 +33,13 @@ public class SuperArray{
   }
 
   public boolean add(String element){
-    if (this.size() != data.length){
-      data[this.size()] = element;
+    if (size() == data.length){
+      resize();
+    }
+      data[size()] = element;
+      size++;
       return true;
-  } else return false;
-}
+    }
 
   public String toString(){
     String result = "";
@@ -76,5 +84,15 @@ public String toStringDebug(){
       return old;
     }
 }
+
+// Phase 2
+
+  private void resize() {
+    String[] copy = new String[size() * 2];
+      for (int i = 0; i < size(); i++){
+        data[i] = copy[i];
+      }
+    data = copy;
+  }
 
 }
