@@ -99,9 +99,25 @@ public String toStringDebug(){
 
   public boolean contains(String element){
     for (int i = 0; i < size(); i++){
-      if ((data[i]).equals(element))
+      if (data[i].equals(element))
       return true;
     } return false;
   }
+
+  public int indexOf(String element){
+    for (int i = 0; i < size(); i++){
+      if (data[i].equals(element))
+        return i;
+    } return -1;
+  }
+
+  public int lastIndexOf(String element){
+    for (int i = size()-1; i >= 0; i--){
+      if (data[i].equals(element))
+        return i;
+    } return -1;
+  }
+
+
 
 }
