@@ -149,6 +149,13 @@ public String toStringDebug(){
   return old;
   }
 
+  public boolean remove(String element){
+    if (this.contains(element)){
+      this.remove(indexOf(element));
+      return true;
+    } return false;
+  }
+
 
 
 
