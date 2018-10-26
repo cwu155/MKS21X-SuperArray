@@ -118,6 +118,17 @@ public String toStringDebug(){
     } return -1;
   }
 
+  public void	add(int index, String element){
+    if (size() == data.length){
+      resize();
+    }
+
+    String newData[] = data;
+    newData[index] = element;
+    for (int i = size()-1; i > index; i--){
+      data[i+1] = newData[i];
+    }
+  }
 
 
 }

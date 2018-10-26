@@ -100,13 +100,13 @@ public class Driver{
     System.out.println(a.add("blue"));
     System.out.println(a.toStringDebug());
 
-    // testing contains()
+    //testing contains()
 
     System.out.println("\n\n-----Testing contains()-----");
     System.out.println(a.contains("blue"));
     System.out.println(a.contains("green"));
 
-    // testing indexOf() and lastIndexOf()
+    //testing indexOf() and lastIndexOf()
     System.out.println("\n\n-----Testing indexOf and lastIndexOf-----");
     System.out.println(a.indexOf("blue"));
     System.out.println(a.indexOf("red"));
@@ -114,7 +114,12 @@ public class Driver{
     System.out.println(a.lastIndexOf("blue"));
     System.out.println(a.lastIndexOf("red"));
     System.out.println(a.lastIndexOf("purple"));
-	}
 
+    //testing void add(int, String)
+    System.out.println("\n\n-----Testing indexOf and lastIndexOf-----");
+    System.out.println(a.toString());
+    a.add(2, "BOO");
+    System.out.println(a.toString());
 
+  }
 }
