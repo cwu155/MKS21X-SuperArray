@@ -13,9 +13,9 @@ public class SuperArray{
   }
 
   public void clear(){
-    for (int i = 0; i < data.length; i++){
-    data[i] = null;
-    }
+     for (int i = 0; i < data.length; i++){
+     data[i] = null;
+     }
   }
 
   public int size(){
@@ -89,8 +89,10 @@ public String toStringDebug(){
 
   private void resize() {
     String[] copy = new String[size() * 2];
+    int j = 0;
       for (int i = 0; i < size(); i++){
-        data[i] = copy[i];
+        copy[i] = data[j];
+        j++;
       }
     data = copy;
   }
@@ -122,13 +124,33 @@ public String toStringDebug(){
     if (size() == data.length){
       resize();
     }
-
-    String newData[] = data;
-    newData[index] = element;
-    for (int i = size()-1; i > index; i--){
-      data[i+1] = newData[i];
+    if (index < 0 || index > size()){
+      System.out.println("Error: Index is not in range!");
     }
+
+    String old = data[index];
+    data[index] = element;
+
+    for (int i = size()-1; i >= index; i--){
+      data[i+1] = data[i];
+      }
+      data[index+1] = old;
+    }
+
+  public String remove(int index){
+    String old = data[index];
+    if (index < 0 || index > size()){
+      return null;
+    }
+
+    for (int i = index ; i < size(); i++){
+      data[i] = data[i+1];
+    }
+  return old;
   }
+
+
+
 
 
 }
