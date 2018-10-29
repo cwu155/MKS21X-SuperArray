@@ -5,11 +5,13 @@ public class SuperArray{
   // Phase 1
 
   public SuperArray(){
+    size = 10;
     data = new String[10];
+
   }
 
-  public SuperArray(int size){
-    data = new String[size];
+  public SuperArray(int startingCapacity){
+    data = new String[(size*2) + 1];
   }
 
   public void clear(){
@@ -69,6 +71,7 @@ public String toStringDebug(){
 
   public String get(int index){
     if (index < 0 || index >= size()){
+      System.out.println("Error!");
       return null;
     } else {
       return data[index];
@@ -77,6 +80,7 @@ public String toStringDebug(){
 
   public String set(int index, String element){
     if (index < 0 || index >= size()){
+      System.out.println("Error!");
       return null;
     } else {
       String old = data[index];
@@ -124,22 +128,21 @@ public String toStringDebug(){
     if (size() == data.length){
       resize();
     }
-    if (index < 0 || index > size()){
-      System.out.println("Error: Index is not in range!");
-    }
-
-    String old = data[index];
-    data[index] = element;
-
-    for (int i = size()-1; i >= index; i--){
-      data[i+1] = data[i];
+    try {
+      for (int i = size()-1; i >= index; i--){
+        data[i+1] = data[i];
       }
-      data[index+1] = old;
+      data[index] = element;
+      size++;
+      }
+    catch (ArrayIndexOutofBoundsException e)
     }
+
 
   public String remove(int index){
     String old = data[index];
     if (index < 0 || index > size()){
+      System.out.println("Error!");
       return null;
     }
 

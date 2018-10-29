@@ -90,7 +90,7 @@ public class Driver {
         almostDone.add(11, "sad day to you");
         System.out.println(almostDone.size() + " ?= 12");
         System.out.println(almostDone + " ?= [ab, cd, ef, happy birthday to me, gh, ij, kl, mn, op, qr, st, sad day to you]");
-    //    almostDone.add(21, "oh no");
+        almostDone.add(21, "oh no");
         System.out.println("There should be error message above");
         System.out.println(almostDone.size() + " ?= 12\n\nPart3");
         //PART 3 testing #8,11
