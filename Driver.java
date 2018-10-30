@@ -1,112 +1,164 @@
 public class Driver {
-    public static void main(String[] args) {
 
-        //PHASE 1NE
-        //PART 1 testing #0,2,3
-        SuperArray mine = new SuperArray();
-        System.out.println("PHASE 1\n\nPart 1\n" + mine.size() + " ?= 0");
-        System.out.println(mine.isEmpty() + " ?= true");
-        String myString = "your";
-        for (int idx = 0; idx < myString.length(); idx++) {
-            mine.add(myString.substring(idx, idx + 1));
-        }
-        System.out.println(mine.add("ssss") + " ?= true");
-        System.out.println(mine.size() + " ?= 5");
-        System.out.println(mine.isEmpty() + " ?= false\n");
-        //PART 2 testing #4,5
-        System.out.println("Part 2\n" + mine + " ?= [y, o, u, r, ssss]");
-        System.out.println(mine.get(4) + mine.get(1) + mine.get(2) + mine.get(3) + " ?= ssssour");
-        System.out.println(mine.get(5) + " ?= null");
-        System.out.println(mine.get(6) + "" + mine.get(7) + " ?= nullnull");
-        System.out.println("YOU SHOULD SEE 3 ERROR MESSAGES ABOVE (error, null, error, error, nullnull)");
-        System.out.println(mine.toStringDebug() + " ?= [y, o, u, r, ssss, null, null, null, null, null]\n");
-        //PART 3 testing #1,6
-        System.out.println("Part 3\n" + mine.set(0, "ssss") + mine.set(3, "pp") + " ?= yr");
-        System.out.println(mine + " ?= [ssss, o, u, pp, ssss]");
-        mine.clear(); //byebye mine you will be gladly missed :(((
-        System.out.println(mine.size() + " ?= 0");
-        System.out.println(mine.get(0) + " ?= null (with one error beforehand)\n\nPHASE 2\n\nPart 1");
+  public static void main(String[] args) {
 
-        //PHASE 2WOO
-        //PART 1 testing #3,7 once
-        String KsString = "supercalifragilisticexpialidocious";
-        SuperArray ligma = new SuperArray();
-        for (int idx = 0; idx < 10; idx++) {
-            ligma.add(KsString.substring(idx, idx + 1));
-        }
-        System.out.println(ligma.toStringDebug() + " ?= [s, u, p, e, r, c, a, l, i, f]"); //NO NULLS HERE
-        ligma.add(KsString.substring(10, 11));
-        System.out.println(ligma.size() + " ?= 11");
-        System.out.println(ligma.toStringDebug() + " ?= [s, u, p, e, r, c, a, l, i, f, r, null,..., null]\nyes you have to count the nulls\nit depends on how you made your resize\nif you made it so when you resize it * 2, there should be 9 nulls\nif you made it so when you resize it * 2 + 1, there should be 10 nulls\nif you made it so when you resize it + 1, there should be 0 nulls");
-        for (int idx = 11; idx < KsString.length(); idx++) {
-            ligma.add(KsString.substring(idx, idx + 1));
-        }
-        System.out.println(ligma.size() + " ?= 34");
-        System.out.println(ligma + " ?= it should spell super...docious");
-        int count = 0;
-        for (int idx = 0; idx < ligma.toStringDebug().length() - 3; idx++) {
-            if (ligma.toStringDebug().substring(idx, idx + 4).equals("null")) {
-                count++;
-            }
-        }
-        System.out.println(count + " ?= using same rules as last time, should be 6, 9, or 0\n\nPart 2");
-        //I hate the word supercalifragilisticexpialidocious now why does this word exist?????
-        //PART 2 testing #3,7 again! i think? It's easier to pass I think
-        SuperArray omg = new SuperArray();
-        for (int idx = 0; idx < 20; idx += 2) {
-            omg.add(idx + "");
-        }
-        System.out.println(omg.size() + " ?= 10");
-        System.out.println(omg + " ?= [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]");
-        String wth = "pleasedontfailme";
-        for (int idx = 0; idx < wth.length() - 1; idx += 2) {
-            omg.add(wth.substring(idx, idx + 2));
-        }
-        System.out.println(omg.size() + " ?= 18\n\nPHASE 3\n\nPart 1");
 
-        //PHASE 3HREEEE
-        //PART 1 testing #8, 9
-        SuperArray almostDone = new SuperArray();
-        String alphabet = "abcdefghijklmnopqrst";
-        for (int idx = 0; idx < alphabet.length() - 1; idx += 2) {
-            almostDone.add(alphabet.substring(idx, idx + 2));
-        }
-        System.out.println(almostDone.contains("op") + " ?= true");
-        System.out.println(almostDone.contains("fg") + " ?= false");
-        System.out.println(almostDone.indexOf("op") + " ?= 7");
-        System.out.println(almostDone.indexOf("fg") + " ?= -1");
-        SuperArray herether = new SuperArray();
-        for (int idx = 0; idx < 15; idx++) {
-            herether.add(idx % 4 + "");
-        }
-        System.out.println(herether.lastIndexOf("3") + " ?= 11");
-        System.out.println(herether.lastIndexOf("4") + " ?= -1");
-        System.out.println(herether.lastIndexOf("0") + " ?= 12\n\nPart 2");
-        //PART 2 testing #8,10
-        almostDone.add(3, "happy birthday to me");
-        System.out.println(almostDone + " ?= [ab, cd, ef, happy birthday to me, gh, ij, kl, mn, op, qr, st]");
-        System.out.println(almostDone.contains("happy birthday to me") + " ?= true");
-        System.out.println(almostDone.size() + " ?= 11");
-        almostDone.add(11, "sad day to you");
-        System.out.println(almostDone.size() + " ?= 12");
-        System.out.println(almostDone + " ?= [ab, cd, ef, happy birthday to me, gh, ij, kl, mn, op, qr, st, sad day to you]");
-        almostDone.add(21, "oh no");
-        System.out.println("There should be error message above");
-        System.out.println(almostDone.size() + " ?= 12\n\nPart3");
-        //PART 3 testing #8,11
-        System.out.println(almostDone.remove(11) + " ?= sad day to you");
-        System.out.println(almostDone.size() + " ?= 11");
-        System.out.println(almostDone.remove(3) + " ?= happy birthday to me");
-        System.out.println(almostDone.size() + " ?= 10");
-        System.out.println(almostDone + " ?= [ab, cd, ef, gh, ij, kl, mn, op, qr, st]");
-    //    System.out.println(almostDone.remove(69) + " ?= null");
-        System.out.println("There should be error message 2 lines above\n" + almostDone.size() + " ?= 10");
-        //PART 4 testing #12
-        System.out.println(almostDone.remove("cd") + " ?= true");
-        System.out.println(almostDone.size() + " ?= 9");
-        System.out.println(almostDone + "[ab, ef, gh, ij, kl, mn, op, qr, st]");
-        System.out.println(almostDone.remove("fg") + " ?= false");
-        System.out.println(almostDone.size() + " ?= 9");
-        System.out.println(almostDone + "[ab, ef, gh, ij, kl, mn, op, qr, st]");
+    System.out.println("TESTING PHASE 1 and 2... except clear() which will be at the end");
+
+    System.out.println();
+    System.out.println();
+    System.out.println("Testing SuperArray(int) ... SA should be [] even when debugged");
+    SuperArray SA = new SuperArray(0);
+
+    System.out.println("Testing toString() and toStringDebug ... Expected: []");
+    System.out.println("Current Status of SA: " + SA.toStringDebug());
+
+    System.out.println();
+
+    System.out.println("Testing isEmpty() ... Expected : true");
+    System.out.println("isEmpty?: " + SA.isEmpty());
+
+    System.out.println();
+
+    System.out.println("Testing add(String) ... Expected : true");
+    System.out.println("Did we add \"A\" to SA? :" + SA.add("A"));
+    System.out.println("Expected : [A]");
+    System.out.println("Testing toString() ... Current Status of SA : " + SA);
+    System.out.println("Testing isEmpty() ... Expected : false");
+    System.out.println("isEmpty?: " + SA.isEmpty());
+    System.out.println("Testing size() ... Expected : 1");
+    System.out.println("Size: " + SA.size());
+
+    System.out.println();
+
+    System.out.println("Adding \"B\" to SA?: " + SA.add("B"));
+    System.out.println("Testing resize() and toStringDebug ... Expected [A, B, null]");
+    System.out.println("Current Status of SA: " + SA.toStringDebug());
+    System.out.println("Testing get(int) ... Expected : B");
+    System.out.println("SA[1] == " + SA.get(1));
+    System.out.println("Testing get(int)\'s throw ... Expected : 2 error messages");
+    try{
+      SA.get(2);
+    } catch(IndexOutOfBoundsException e){
+      System.out.println("Caught an Exception in get()");
     }
+    try{
+      SA.get(-2);
+    } catch (IndexOutOfBoundsException e){
+      System.out.println("Caught an Exception in get()");
+    }
+
+    System.out.println();
+
+    System.out.println("Testing set(int,String) ...  Expected : A");
+    System.out.println("\"C\" will replace : " + SA.set(0,"C"));
+    System.out.println("Expected : [C, B]");
+    System.out.println("SA\'s Current Status: " + SA);
+    System.out.println("Testing set(int,String)\'s throw ... Expected : 2 error messages");
+    try{
+      SA.set(2,"C");
+    } catch(IndexOutOfBoundsException e){
+      System.out.println("Caught an Exception in set(int,String)");
+    }
+    try{
+      SA.set(-2,"xd");
+    } catch (IndexOutOfBoundsException e){
+      System.out.println("Caught an Exception in set(int,String)");
+    }
+
+    System.out.println();
+    System.out.println("Expected : [C, B]");
+    System.out.println("SA\'s Current Status after Testing Phase 1: " + SA);
+    System.out.println("Expected : [C, B, null]");
+    System.out.println("SA\'s Current debugged Status after Testing Phase 1: " + SA.toStringDebug());
+    System.out.println();
+    System.out.println("******************************************************");
+    System.out.println();
+    System.out.println("TESTING PHASE 2 and 3 ...");
+
+    System.out.println();
+
+    System.out.println("Testing add(int.String) ... Expected : SA should be [C, D, B, E]");
+    SA.add(1,"D");
+    SA.add(3, "E");
+    System.out.println("SA\'s Current Status: " + SA);
+    System.out.println("Testing add(int,String)\'s throw ... Expected : 2 error messages");
+    try{
+      SA.add(5,"xd");
+    } catch (IndexOutOfBoundsException e){
+      System.out.println("Caught an Exception in add(int,String)");
+    }
+    try{
+      SA.add(-2,"xd");
+    } catch (IndexOutOfBoundsException e){
+      System.out.println("Caught an Exception in add(int,String)");
+    }
+
+    System.out.println();
+
+    System.out.println("Testing resize() ... Expected: SA when debugged should be [C, D, B, E, null, null, null]");
+    System.out.println(SA.toStringDebug());
+
+    System.out.println();
+
+    System.out.println("Testing contains(String) ... Expected : true");
+    System.out.println("Does SA contain \"C\" ?: " + SA.contains("C"));
+    System.out.println("Expected : false");
+    System.out.println("Does SA contain \"C\" ?: " + SA.contains("F"));
+
+    System.out.println("Testing indexOf(String) ... Expected : 3");
+    System.out.println("Where is \"E\" in SA? :" + SA.indexOf("E"));
+    System.out.println("Expected : -1");
+    System.out.println("Where is \"E\" in SA? :" + SA.indexOf("Z"));
+
+    System.out.println();
+
+    SA.add("C");
+    System.out.println("Added \"C\" to the end of the list using add(String)");
+    System.out.println("Status of SA is: " + SA);
+
+    System.out.println();
+
+    System.out.println("Testing lastIndexOf(String) ... Expected : 4");
+    System.out.println("Where is \"C\" in SA? :" + SA.lastIndexOf("C"));
+    System.out.println("Expected : -1");
+    System.out.println("Where is \"Z\" in SA? :" + SA.lastIndexOf("Z"));
+
+    System.out.println();
+
+    System.out.println("Testing remove(int) ...  Expected : Removed element is D");
+    System.out.println("The element that is removed is : " + SA.remove(1));
+    System.out.println("Expected: SA is [C, B, E, C]");
+    System.out.println("Current Status of SA: " + SA);
+    System.out.println("Testing remove(int)\'s throw ... Expected : 2 error messages");
+    try{
+      SA.remove(7);
+    } catch (IndexOutOfBoundsException e){
+      System.out.println("Caught an Exception in remove(int)");
+    }
+    try{
+      SA.remove(-2);
+    } catch (IndexOutOfBoundsException e){
+      System.out.println("Caught an Exception in remove(int)");
+    }
+
+    System.out.println();
+
+    System.out.println("Testing remove(String) ...  Expected : true");
+    System.out.println("The first element, \"C\" is removed ? : " + SA.remove("C"));
+    System.out.println("Expected: SA is [B, E, C]");
+    System.out.println("Current Status of SA: " + SA);
+    System.out.println("Expected: false");
+    System.out.println(SA.remove("ASD"));
+
+    System.out.println();
+
+    System.out.println("Testing clear() ... Expected : SA should be []");
+    SA.clear();
+    System.out.println(SA);
+
+    System.out.println();
+
+    System.out.println("END OF TESTING");
+  }
 }

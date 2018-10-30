@@ -15,9 +15,10 @@ public class SuperArray{
   }
 
   public void clear(){
-     for (int i = 0; i < data.length; i++){
-     data[i] = null;
-     }
+     // for (int i = 0; i < data.length; i++){
+     // data[i] = null;
+     // }
+     data = new String[size()];
   }
 
   public int size(){
@@ -71,8 +72,7 @@ public String toStringDebug(){
 
   public String get(int index){
     if (index < 0 || index >= size()){
-      System.out.println("Error!");
-      return null;
+      throw new IndexOutOfBoundsException("Error! Array out of bounds.");
     } else {
       return data[index];
     }
@@ -80,8 +80,7 @@ public String toStringDebug(){
 
   public String set(int index, String element){
     if (index < 0 || index >= size()){
-      System.out.println("Error!");
-      return null;
+      throw new IndexOutOfBoundsException("Error! Array out of bounds.");
     } else {
       String old = data[index];
       data[index] = element;
@@ -92,7 +91,7 @@ public String toStringDebug(){
 // Phase 2
 
   private void resize() {
-    String[] copy = new String[size() * 2];
+    String[] copy = new String[(size() * 2) + 1];
     int j = 0;
       for (int i = 0; i < size(); i++){
         copy[i] = data[j];
@@ -128,28 +127,28 @@ public String toStringDebug(){
     if (size() == data.length){
       resize();
     }
-    try {
+    if (index < 0 || index > size()){
+      throw new IndexOutOfBoundsException("Error! Array out of bounds.");
+    } else {
       for (int i = size()-1; i >= index; i--){
         data[i+1] = data[i];
       }
       data[index] = element;
       size++;
-      }
-    catch (ArrayIndexOutofBoundsException e)
+    }
     }
 
 
   public String remove(int index){
     String old = data[index];
     if (index < 0 || index > size()){
-      System.out.println("Error!");
-      return null;
-    }
-
-    for (int i = index ; i < size(); i++){
+      throw new IndexOutOfBoundsException("Error! Array out of bounds.");
+    } else {
+      for (int i = index ; i < size(); i++){
       data[i] = data[i+1];
     }
-  return old;
+    return old;
+    }
   }
 
   public boolean remove(String element){
